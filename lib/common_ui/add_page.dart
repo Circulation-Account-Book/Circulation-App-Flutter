@@ -47,16 +47,17 @@ class AddPage extends StatelessWidget {
               cornerRadius: 0,
               activeFgColor: Colors.white,
               activeBgColor: [
-                Color(0XFF6A93BF),
+                Color(0xB2767676),
               ],
               inactiveBgColor: Colors.white,
               inactiveFgColor: Colors.grey,
               borderColor: [
-                Color(0XFF6A93BF),
+                Color(0xFF999999),
               ],
               borderWidth: 1,
               minWidth: 125,
               minHeight: 30,
+              dividerMargin: 150,
               onToggle: (index) {
                 kindCode = index!;
               },

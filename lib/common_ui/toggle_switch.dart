@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:froot_app/content_model.dart';
 
 class ToggleSwitch extends StatefulWidget {
-  ContentType contentType;
+  final ContentType contentType;
 
   ToggleSwitch(this.contentType, {Key? key}) : super(key: key);
 

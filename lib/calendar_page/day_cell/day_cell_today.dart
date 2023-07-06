@@ -26,7 +26,7 @@ class DayCellToday extends DayCellSuper {
               children: [
                 Container(
                     width: constraints.maxWidth,
-                    height: constraints.maxHeight / 4,
+                    height: constraints.maxHeight / 5,
                     alignment: Alignment.topLeft,
                     padding: const EdgeInsets.all(3),
                     decoration: const BoxDecoration(color: Colors.indigo),

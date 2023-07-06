@@ -26,11 +26,11 @@ class DayContentsSheet extends StatelessWidget {
 
     return DraggableScrollableSheet(
       expand: false,
-      initialChildSize: 0.7,
-      minChildSize: 0.6,
+      initialChildSize: 0.8,
+      minChildSize: 0.78,
       maxChildSize: 1,
       snap: true,
-      snapSizes: [0.7],
+      snapSizes: [0.8],
       builder: (context, scrollController) => SafeArea(
         child: Container(
           decoration: BoxDecoration(

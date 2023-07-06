@@ -22,7 +22,7 @@ class CalendarBody extends StatelessWidget {
         headerVisible: false,
         locale: "ko_KR",
         daysOfWeekHeight: 22,
-        rowHeight: Get.height * 0.11,
+        rowHeight: Get.height * 0.115,
         sixWeekMonthsEnforced: true,
         onPageChanged: cont.setPickerDate,
         calendarBuilders: CalendarBuilders(

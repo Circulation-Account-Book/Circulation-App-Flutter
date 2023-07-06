@@ -3,12 +3,17 @@ import 'package:froot_app/calendar_page/model/month_contents_model.dart';
 import 'package:get/get.dart';
 
 class CalendarController extends GetxController {
-  var focusedDay = DateTime.now().obs;
-  var curMonth = MonthContentsModel().obs;
+  var pickerDate = DateTime.now().obs;
+  var calendarDate = DateTime.now().obs;
+  var curMonthData = MonthContentsModel().obs;
 
-  DayContentsModel? getDayContents(int day) => curMonth.value.dayContentsMap[day];
+  DayContentsModel? getDayContents(int day) => curMonthData.value.dayContentsMap[day];
 
-  void gotoMonth(DateTime newDate) {
-    focusedDay.value = newDate;
+  void setDate(DateTime newDate) {
+    calendarDate.value = newDate;
+  }
+
+  void setPickerDate(DateTime newDate) {
+    pickerDate.value = newDate;
   }
 }

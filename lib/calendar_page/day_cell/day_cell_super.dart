@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:froot_app/calendar_page/day_contents_sheet/day_contents_sheet.dart';
+import 'package:get/get.dart';
 
 class DayCellSuper extends StatelessWidget {
   final DateTime date;
@@ -12,12 +13,10 @@ class DayCellSuper extends StatelessWidget {
 
   const DayCellSuper(this.date, {Key? key}) : super(key: key);
 
-  void onTap(BuildContext context) => showModalBottomSheet(
+  void onTap() => Get.bottomSheet(DayContentsSheet(date),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       isScrollControlled: true,
-      builder: (context) => DayContentsSheet(date),
-      context: context,
-      useSafeArea: true);
+      ignoreSafeArea: false);
 
   @override
   Widget build(BuildContext context) {

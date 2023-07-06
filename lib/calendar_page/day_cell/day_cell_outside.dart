@@ -7,7 +7,7 @@ class DayCellOutside extends DayCellSuper {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap(context),
+      onTap: onTap,
       child: Container(
           alignment: Alignment.topLeft,
           decoration: BoxDecoration(

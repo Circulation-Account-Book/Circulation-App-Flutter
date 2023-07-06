@@ -12,7 +12,7 @@ class DayCellToday extends DayCellSuper {
     var cont = Get.find<CalendarController>();
 
     return GestureDetector(
-      onTap: () => onTap(context),
+      onTap: onTap,
       child: Container(
           decoration: BoxDecoration(
               border: Border(bottom: border, right: border),

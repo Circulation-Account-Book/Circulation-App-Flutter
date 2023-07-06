@@ -25,13 +25,13 @@ class CalendarHeader extends StatelessWidget {
             children: [
               OutlinedButton(
                 onPressed: () =>
-                    Get.dialog(MonthYearPicker(cont.focusedDay.value))
+                    Get.dialog(MonthYearPicker(cont.pickerDate.value))
                         .then((selectedDate) {
-                  if (selectedDate != null) cont.gotoMonth(selectedDate);
+                  if (selectedDate != null) cont.setDate(selectedDate);
                 }),
                 child: Obx(
                   () => Text(
-                    DateFormat.yMMM('ko_KR').format(cont.focusedDay.value),
+                    DateFormat.yMMM('ko_KR').format(cont.pickerDate.value),
                     style: const TextStyle(
                         fontSize: 16, color: Color.fromRGBO(118, 118, 118, 1)),
                   ),

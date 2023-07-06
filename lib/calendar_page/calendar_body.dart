@@ -18,13 +18,13 @@ class CalendarBody extends StatelessWidget {
       () => TableCalendar(
         firstDay: DateTime.utc(2000, 1, 1),
         lastDay: DateTime.utc(2030, 12, 31),
-        focusedDay: cont.focusedDay.value,
+        focusedDay: cont.calendarDate.value,
         headerVisible: false,
         locale: "ko_KR",
         daysOfWeekHeight: 22,
         rowHeight: Get.height * 0.11,
         sixWeekMonthsEnforced: true,
-        onPageChanged: cont.gotoMonth,
+        onPageChanged: cont.setPickerDate,
         calendarBuilders: CalendarBuilders(
           defaultBuilder: (context, day, focusedDay) => DayCellDefault(day),
           outsideBuilder: (context, day, focusedDay) => DayCellOutside(day),

@@ -1,83 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:froot_app/common_ui/spaced_toggle_switch_controller.dart';
+import 'package:get/get.dart';
 
-class SpacedToggleSwitch extends StatefulWidget {
-  final int initialIndex;
+class SpacedToggleSwitch extends StatelessWidget {
+  final SpacedToggleSwitchController cont;
   final int totalSwitches;
   final double fontSize;
-  final Color primaryColor;
+  final Color selectedColor;
+  final Color defaultColor;
+  final double height;
+  final double width;
+  final List<String> labels;
 
-  SpacedToggleSwitch(
-      {Key? key,
-      required this.totalSwitches,
-      required this.initialIndex,
-      required this.primaryColor,
-      required this.fontSize})
-      : super(key: key);
-
-  @override
-  State<SpacedToggleSwitch> createState() => _SpacedToggleSwitchState();
-}
-
-class _SpacedToggleSwitchState extends State<SpacedToggleSwitch> {
-  late int selectedindex;
-
-  @override
-  void initState() {
-    super.initState();
-    selectedindex = widget.initialIndex;
-  }
+  SpacedToggleSwitch({
+    Key? key,
+    required this.totalSwitches,
+    required this.selectedColor,
+    required this.defaultColor,
+    required this.fontSize,
+    required this.labels,
+    required this.height,
+    required this.width,
+    required int initialIndex,
+  }) : cont = SpacedToggleSwitchController(initialIndex);
 
   @override
   Widget build(BuildContext context) {
     var selectedDecoration = BoxDecoration(
-      color: widget.primaryColor.withOpacity(0.7),
+      color: selectedColor
     );
     var defaultDecoration = BoxDecoration(
-        color: Colors.white, border: Border.all(color: widget.primaryColor));
+        color: Colors.white, border: Border.all(color: defaultColor));
 
-    var selectedTxtStyle =
-        TextStyle(fontSize: widget.fontSize, color: Colors.white);
-    var defaultTxtStyle =
-        TextStyle(fontSize: widget.fontSize, color: widget.primaryColor);
+    var selectedTxtStyle = TextStyle(fontSize: fontSize, color: Colors.white);
+    var defaultTxtStyle = TextStyle(fontSize: fontSize, color: defaultColor);
 
     return Row(
-      children: [
-        GestureDetector(
-          onTap: () => setState(() => selectedindex = 0),
-          child: Container(
-            alignment: Alignment.center,
-            decoration:
-                selectedindex == 0 ? selectedDecoration : defaultDecoration,
-            child: Text(
-              "소비",
-              style: selectedindex == 0 ? selectedTxtStyle : defaultTxtStyle,
-            ),
-          ),
-        ),
-        GestureDetector(
-          onTap: () => setState(() => selectedindex = 1),
-          child: Container(
-            alignment: Alignment.center,
-            decoration:
-                selectedindex == 1 ? selectedDecoration : defaultDecoration,
-            child: Text(
-              "낭비",
-              style: selectedindex == 1 ? selectedTxtStyle : defaultTxtStyle,
-            ),
-          ),
-        ),
-        GestureDetector(
-            onTap: () => setState(() => selectedindex = 2),
-            child: Container(
-              alignment: Alignment.center,
-              decoration:
-                  selectedindex == 2 ? selectedDecoration : defaultDecoration,
-              child: Text(
-                "투자",
-                style: selectedindex == 2 ? selectedTxtStyle : defaultTxtStyle,
-              ),
-            ))
-      ],
-    );
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: List.generate(
+            totalSwitches,
+            (index) => GestureDetector(
+                onTap: () => cont.setIndex(index),
+                child: Obx(
+                  () => Container(
+                    alignment: Alignment.center,
+                    width: width,
+                    height: height,
+                    decoration: cont.selectedIndex == index
+                        ? selectedDecoration
+                        : defaultDecoration,
+                    child: Text(
+                      labels[index],
+                      style: cont.selectedIndex == index
+                          ? selectedTxtStyle
+                          : defaultTxtStyle,
+                    ),
+                  ),
+                )),
+            growable: false));
   }
 }
